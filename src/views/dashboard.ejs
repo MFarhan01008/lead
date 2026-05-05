@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/public/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Restaurant WhatsApp Assistant</h1>
+      <section>
+        <h2>Restaurants</h2>
+        <ul>
+          <% restaurants.forEach(function(r){ %>
+            <li><a href="/admin/restaurant/<%= r.id %>"><%= r.name %></a> - Staff: <%= r.staff_whatsapp %></li>
+          <% }) %>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recent Orders</h2>
+        <table>
+          <thead><tr><th>ID</th><th>Restaurant</th><th>Name</th><th>Total</th><th>Created</th></tr></thead>
+          <tbody>
+            <% orders.forEach(function(o){ %>
+              <tr>
+                <td><%= o.id %></td>
+                <td><%= o.restaurant_id %></td>
+                <td><%= o.customer_name %></td>
+                <td>$<%= o.total.toFixed(2) %></td>
+                <td><%= o.created_at %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>
